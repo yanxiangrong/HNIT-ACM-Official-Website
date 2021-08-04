@@ -152,5 +152,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "nyan-progress-webpack-plugin": "^1.2.0"
   }
 }

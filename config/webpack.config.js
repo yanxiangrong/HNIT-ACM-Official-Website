@@ -26,6 +26,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -558,6 +559,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       // Generates an `index.html` file with the <script> injected.
+      new NyanProgressPlugin(),
       new HtmlWebpackPlugin(
         Object.assign(
           {},
