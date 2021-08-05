@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "Aquire-Regular";
+  src: url(./assets/fonts/Aquire-Regular.otf) format("opentype");
+}

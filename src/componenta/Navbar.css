@@ -3,6 +3,70 @@
     top: 0;
     width: 100%;
     z-index: 100;
-    color: #fff;
-    transition: color .2s ease-in-out;
+    color: white;
+    background-color: #FFFFFF00;
+    transition: background-color .5s ease-in-out;
+}
+
+.navBar-header {
+    display: flex;
+    flex-direction: row;
+    padding: .5em 2em;
+    align-items: center;
+}
+
+.navBar-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+.navBar-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.navBar-logo {
+    height: 3em;
+    object-fit: cover;
+    margin-top: -3px;
+    padding-bottom: 3px;
+}
+
+.navBar-logo-link {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    text-decoration: none;
+}
+
+
+.navBar-logo-title {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+    font-family: "Aquire-Regular", serif;
+    font-size: 28px;
+}
+
+.navBar-menu {
+    list-style: none;
+}
+
+.navBar-menu-item {
+    margin: 0 1em;
+}
+
+.navBar-menu-link {
+    color: white;
+    text-decoration: none;
+}
+
+.navBar-menu-item:hover {
+    border-bottom: solid 2px;
+    border-bottom-color: white;
+    padding-bottom: 2px;
+    margin-bottom: -4px;
 }
