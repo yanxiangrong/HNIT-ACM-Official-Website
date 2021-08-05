@@ -1,6 +1,6 @@
 import "./Footer.css"
 import QqOutlined from "@ant-design/icons/QqOutlined";
-
+import GithubOutlined from "@ant-design/icons/GithubOutlined";
 function Footer() {
   return (
     <div className={"footer"}>
@@ -12,6 +12,10 @@ function Footer() {
         <a className={"followLink"} rel={"noreferrer"} target={"_blank"}
            href={"https://jq.qq.com/?_wv=1027&k=S0zNYN1H"}>
           <QqOutlined className={"icon"}/>
+        </a>
+        <a className={"followLink"} rel={"noreferrer"} target={"_blank"}
+           href={"https://github.com/hnit-acm"}>
+          <GithubOutlined className={"icon"}/>
         </a>
       </div>
       <div className={"copyright"}>

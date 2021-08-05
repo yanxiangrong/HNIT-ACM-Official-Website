@@ -38,7 +38,7 @@
     color: #333;
     font-size: large;
     font-weight: 700;
-    margin-right: 2em;
+    margin-right: 1em;
 }
 
 .followLink {
@@ -47,6 +47,7 @@
 }
 
 .icon {
+    margin-left: 20px;
     color: #333;
     border: 1px solid #333;
     padding: 5px;
