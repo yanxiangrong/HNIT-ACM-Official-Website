@@ -2,7 +2,7 @@ import "./Home.css"
 
 function Home() {
   return (
-    <div style={{zIndex: 0, height: 2000, position: "absolute", width: "100%"}}>
+    <div>
       <div className={"videoHeader"}>
         <div className={"headerContent"}>
           <h1 className={"header"}>
@@ -16,7 +16,7 @@ function Home() {
           </video>
         </div>
       </div>
-      <h1>
+      <h1 style={{height: "800px"}}>
         aaa
       </h1>
     </div>

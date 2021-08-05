@@ -3,6 +3,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import './App.css';
 import ChildRoutes from "./routes/index"
 import Navbar from "./componenta/Navbar";
+import Footer from "./componenta/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <ChildRoutes/>
       </Router>
+      <Footer/>
     </div>
   );
 }
