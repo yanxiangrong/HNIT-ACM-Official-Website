@@ -1,4 +1,5 @@
 import "./Footer.css"
+import QqOutlined from "@ant-design/icons/QqOutlined";
 
 function Footer() {
   return (
@@ -8,6 +9,10 @@ function Footer() {
       </h2>
       <div className={"follow"}>
         <span className={"followText"}>FOLLOW US</span>
+        <a className={"followLink"} rel={"noreferrer"} target={"_blank"}
+           href={"https://jq.qq.com/?_wv=1027&k=S0zNYN1H"}>
+          <QqOutlined className={"icon"}/>
+        </a>
       </div>
       <div className={"copyright"}>
         Designed By XiaoRong<br/>

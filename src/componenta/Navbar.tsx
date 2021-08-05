@@ -49,7 +49,7 @@ export class Navbar extends React.Component<any, any> {
       {name: "关于", href: "/"}]
     const menu = menuItems.map((item) => {
       return (
-        <li className={"navBar-menu-item"}>
+        <li key={item.name} className={"navBar-menu-item"}>
           <a className={"navBar-menu-link"} href={item.href}>{item.name}</a>
         </li>
       )

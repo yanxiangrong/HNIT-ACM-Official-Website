@@ -7,9 +7,18 @@
 .footerHead {
     color: #333;
     margin-left: 60px;
+    margin-right: 60px;
     text-align: left;
     font-weight: normal;
     font-size: xx-large;
+}
+
+.footerHead:after {
+    display: block;
+    width: 100%;
+    content: "";
+    margin-top: 30px;
+    border-bottom: 1px solid #ADADAD;
 }
 
 .copyright {
@@ -28,4 +37,23 @@
     color: #333;
     font-size: large;
     font-weight: 700;
+    margin-right: 2em;
+}
+
+.followLink {
+    color: #333;
+    text-decoration: none;
+}
+
+.icon {
+    color: #333;
+    border: #333 solid 1px;
+    padding: 5px;
+    font-size: 32px;
+    border-radius: 50%;
+    transition: color .2s ease-in-out;
+}
+
+.icon:hover {
+    color: #515151;
 }
