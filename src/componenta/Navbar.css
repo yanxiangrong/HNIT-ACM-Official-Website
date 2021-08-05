@@ -45,10 +45,16 @@
 
 .navBar-logo-title {
     display: flex;
+    color: white;
     align-items: center;
     margin-left: 4px;
     font-family: "Aquire-Regular", serif;
     font-size: 28px;
+    transition: color .2s ease-in-out;
+}
+
+.navBar-logo-title:hover {
+    color: #FB7299;
 }
 
 .navBar-menu {
@@ -62,11 +68,16 @@
 .navBar-menu-link {
     color: white;
     text-decoration: none;
+    transition: color .2s ease-in-out;
+}
+
+.navBar-menu-link:hover {
+    color: #FB7299;
 }
 
 .navBar-menu-item:hover {
     border-bottom: solid 2px;
-    border-bottom-color: white;
+    border-bottom-color: #FB7299;
     padding-bottom: 2px;
     margin-bottom: -4px;
 }

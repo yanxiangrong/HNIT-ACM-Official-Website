@@ -44,6 +44,7 @@ export class Navbar extends React.Component<any, any> {
     const menuItems: menuItem[] = [
       {name: "主页", href: "/"},
       {name: "加入我们", href: "/"},
+      {name: "湖工OJ", href: "/"},
       {name: "基地", href: "/"},
       {name: "照片墙", href: "/"},
       {name: "关于", href: "/"}]

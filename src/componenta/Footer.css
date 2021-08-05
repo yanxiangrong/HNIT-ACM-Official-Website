@@ -31,6 +31,7 @@
 .follow {
     margin-left: 60px;
     text-align: left;
+    margin-bottom: 40px;
 }
 
 .followText {
@@ -47,7 +48,7 @@
 
 .icon {
     color: #333;
-    border: #333 solid 1px;
+    border: 1px solid #333;
     padding: 5px;
     font-size: 32px;
     border-radius: 50%;
@@ -55,5 +56,6 @@
 }
 
 .icon:hover {
-    color: #515151;
+    color: #FB7299;
+    border-color: #FB7299;
 }
