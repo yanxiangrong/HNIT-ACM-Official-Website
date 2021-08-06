@@ -91,6 +91,7 @@
 }
 
 .speakerIcon:before {
+    box-sizing: content-box;
     transform: rotate(45deg);
     border-radius: 0 50px 0 0;
     content: "";
@@ -125,7 +126,6 @@
 .aboutContent {
     margin-top: 4em;
     width: max-content;
-    margin-left: 8em;
     margin-bottom: 4em;
 }
 
@@ -171,3 +171,75 @@
     }
 }
 
+.portfolio {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.portfolio h2 {
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 500;
+    color: #0b0b0b;
+}
+
+.classroomTable {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.moveTable {
+    width: fit-content;
+    position: relative;
+    transition: top .2s linear, left .2s linear;
+}
+
+.moveTablePic {
+    margin-left: 10%;
+    width: fit-content;
+    object-fit: contain;
+    height: 500px;
+    transform: translateY(-40px);
+}
+
+.tablePic {
+    margin-right: 10%;
+    width: fit-content;
+    object-fit: contain;
+    height: 500px;
+    transform: translateY(-180px);
+    margin-bottom: -120px;
+}
+
+
+.paragraph {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.group {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tableRewardPic {
+    margin-right: 5%;
+    width: fit-content;
+    object-fit: contain;
+    height: 500px;
+}
+
+.groupText {
+    text-align: left;
+}
+
+.underline {
+    border-bottom: solid 2px;
+}
+
+.abHead {
+    font-size: 24px;
+}

@@ -29,6 +29,8 @@
 }
 
 .navBar-logo {
+    box-sizing: content-box;
+    font-size: 16px;
     height: 3em;
     object-fit: cover;
     margin-top: -3px;
@@ -44,6 +46,7 @@
 
 
 .navBar-logo-title {
+    white-space: nowrap;
     display: flex;
     color: white;
     align-items: center;
@@ -58,14 +61,20 @@
 }
 
 .navBar-menu {
+    margin-bottom: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
     list-style: none;
 }
 
 .navBar-menu-item {
-    margin: 0 1em;
+    font-size: 16px;
+    margin: 14px 1em;
 }
 
 .navBar-menu-link {
+    white-space: nowrap;
     color: white;
     text-decoration: none;
     transition: color .2s ease-in-out;
@@ -79,5 +88,46 @@
     border-bottom: solid 2px;
     border-bottom-color: #FB7299;
     padding-bottom: 2px;
-    margin-bottom: -4px;
+    margin-bottom: 10px;
+}
+
+.navBtn {
+    display: none;
+}
+
+.navBtnIcon {
+    font-size: 24px;
+    color: white;
+    transition: color .2s ease-in-out;
+}
+
+.navBtnIcon:hover {
+    color: #FB7299;
+}
+
+@media (max-width: 640px) {
+    .navBtn {
+        display: inline-block;
+    }
+
+    .navBar-menu-open {
+        height: 214px;
+    }
+    .navBar-menu-close {
+        height: 0;
+    }
+
+    .navBar-menu {
+        padding: 0;
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        right: 0;
+        background-color: #2e2e2e;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+    }
 }

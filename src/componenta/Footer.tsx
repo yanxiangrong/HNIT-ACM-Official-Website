@@ -19,7 +19,7 @@ function Footer() {
         </a>
       </div>
       <div className={"copyright"}>
-        Designed By XiaoRong<br/>
+        Designed By XiaoRong/Coodyz<br/>
         © 2020 - 2021 HNIT-ACM
       </div>
     </div>
