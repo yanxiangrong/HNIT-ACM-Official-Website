@@ -2,10 +2,59 @@ import "./Home.css"
 import React from "react";
 
 export default class Home extends React.Component<any, any> {
+  private readonly textRef: any;
+
   constructor(props: any) {
     super(props)
     this.state = {isMuted: true}
     this.muteBtuHandle = this.muteBtuHandle.bind(this)
+    this.textRef = React.createRef()
+  }
+
+  textAnimation() {
+    const words = ["学习。", "写代码。", "交流", "刷题。", "摸鱼。", "膜拜大佬。", "追逐梦想。", "自习。", "参加比赛。", "集训。"];
+    let i = 0;
+    const node = this.textRef.current;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      const loopTyping = function () {
+        if (word.length > 0) {
+          node.innerHTML += word.shift();
+        } else {
+          setTimeout(deletingEffect, 2000);
+          return false;
+        }
+        setTimeout(loopTyping, 400);
+      };
+      loopTyping();
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      const loopDeleting = function () {
+        if (word.length > 0) {
+          word.pop();
+          node.innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          }
+          setTimeout(typingEffect, 600)
+          return false;
+        }
+        setTimeout(loopDeleting, 200);
+      };
+      loopDeleting();
+    }
+
+    typingEffect();
+  }
+
+  componentDidMount() {
+    this.textAnimation()
   }
 
   muteBtuHandle() {
@@ -25,7 +74,9 @@ export default class Home extends React.Component<any, any> {
         <div className={"videoHeader"}>
           <div className={"headerContent"}>
             <h1 className={"header"}>
-              欢迎加入我们的团队，一起学习
+              欢迎加入我们的团队，一起
+              <div ref={this.textRef}/>
+              <span className={"blinking-cursor"}/>
             </h1>
           </div>
           <div className={"videoBackground"}>
