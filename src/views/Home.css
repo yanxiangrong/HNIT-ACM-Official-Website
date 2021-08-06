@@ -24,7 +24,7 @@
 
 .headerContent {
     display: flex;
-    width: 80%;
+    width: 100%;
     padding-left: 10%;
     padding-right: 10%;
     flex-direction: column;
@@ -70,12 +70,12 @@
     height: 8px;
     background: #fff;
     margin: 11px 0 0 2px;
-    opacity: 30%;
+    opacity: .3;
     transition: opacity .2s ease-in-out;
 }
 
 .speakerIcon:hover {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .speakerIcon:after {
@@ -116,11 +116,11 @@
 }
 
 .speakerIcon.mute {
-    opacity: 70%;
+    opacity: .7;
 }
 
 .speakerIcon.mute:hover {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .aboutContent {
@@ -192,30 +192,54 @@
 .moveTable {
     width: fit-content;
     position: relative;
-    transition: top .2s linear, left .2s linear;
+    animation: 2s move linear infinite;
 }
 
-.moveTablePic {
-    margin-left: 10%;
-    width: fit-content;
-    object-fit: contain;
-    height: 500px;
-    transform: translateY(-40px);
-}
-
-.tablePic {
-    margin-right: 10%;
-    width: fit-content;
-    object-fit: contain;
-    height: 500px;
-    transform: translateY(-180px);
-    margin-bottom: -120px;
-}
-
-
-.paragraph {
-    margin-left: 10%;
-    margin-right: 10%;
+@keyframes move {
+    0% {
+        top: 14px;
+        left: 12px;
+    }
+    10%{
+        top: 16px;
+        left: 13px;
+    }
+    20% {
+        top: 7px;
+        left: -17px;
+    }
+    30% {
+        top: 22px;
+        left: -1px;
+    }
+    40% {
+        top: -5px;
+        left: -18px;
+    }
+    50% {
+        top: 5px;
+        left: 5px;
+    }
+    60% {
+        top: 19px;
+        left: 0;
+    }
+    70% {
+        top: 4px;
+        left: 7px;
+    }
+    80% {
+        top: 24px;
+        left: 4px;
+    }
+    90% {
+        top: 23px;
+        left: -2px;
+    }
+    100% {
+        top: 14px;
+        left: 12px;
+    }
 }
 
 .group {
@@ -223,13 +247,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.tableRewardPic {
-    margin-right: 5%;
-    width: fit-content;
-    object-fit: contain;
-    height: 500px;
 }
 
 .groupText {
@@ -242,4 +259,112 @@
 
 .abHead {
     font-size: 24px;
+}
+
+.tableRewardPic {
+    margin-right: 5%;
+    width: auto;
+    object-fit: contain;
+    max-height: 500px;
+}
+
+@media (max-width: 680px) {
+
+    .moveTablePic {
+        display: none;
+    }
+
+    .tablePic {
+        display: none;
+    }
+
+    .headerContent {
+        display: flex;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        z-index: 3;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: left;
+        margin-top: 460px;
+        color: white;
+    }
+}
+
+@media (max-width: 1000px) {
+    .moveTable {
+        width: fit-content;
+        position: relative;
+        top: 0;
+        left: 0;
+        animation: none;
+    }
+}
+
+@media (max-width: 830px) {
+    .moveTable {
+        width: fit-content;
+        position: relative;
+        top: 0;
+        left: 0;
+        animation: none;
+    }
+    .paragraph {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .moveTablePic {
+        margin-left: 5%;
+        width: fit-content;
+        object-fit: contain;
+        height: 500px;
+        transform: translateY(-40px);
+    }
+
+    .tablePic {
+        margin-right: 5%;
+        width: fit-content;
+        object-fit: contain;
+        height: 500px;
+        transform: translateY(-180px);
+        margin-bottom: -120px;
+    }
+
+    .group {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 830px) {
+    .paragraph {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .moveTablePic {
+        margin-left: 10%;
+        width: fit-content;
+        object-fit: contain;
+        height: 500px;
+        transform: translateY(-40px);
+    }
+
+    .tablePic {
+        margin-right: 10%;
+        width: fit-content;
+        object-fit: contain;
+        height: 500px;
+        transform: translateY(-180px);
+        margin-bottom: -120px;
+    }
 }

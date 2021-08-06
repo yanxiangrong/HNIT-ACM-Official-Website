@@ -6,14 +6,9 @@ import Pic22 from "../assets/22.png"
 import Pic33 from "../assets/33.png"
 import rewardTable from "../assets/Snipaste_2021-08-06_15-10-42.png"
 
-interface MoveOffset {
-  top: number
-  left: number
-}
 
 interface State {
   isMuted: boolean
-  tableOffset: MoveOffset
 }
 
 export default class Home extends React.Component<any, State> {
@@ -21,9 +16,8 @@ export default class Home extends React.Component<any, State> {
 
   constructor(props: any) {
     super(props)
-    this.state = {isMuted: true, tableOffset: {top: 0, left: 0}}
+    this.state = {isMuted: true}
     this.muteBtuHandle = this.muteBtuHandle.bind(this)
-    this.moveTable = this.moveTable.bind(this)
     this.textRef = React.createRef()
   }
 
@@ -69,18 +63,8 @@ export default class Home extends React.Component<any, State> {
     typingEffect();
   }
 
-  moveTable() {
-    const _this = this
-    setInterval(() => {
-      const rand1 = Math.floor(Math.random() * 36) - 6;
-      const rand2 = Math.floor(Math.random() * 36) - 18;
-      _this.setState({tableOffset: {top: rand1, left: rand2}})
-    }, 200)
-  }
-
   componentDidMount() {
     this.textAnimation()
-    this.moveTable()
   }
 
   muteBtuHandle() {
@@ -100,11 +84,16 @@ export default class Home extends React.Component<any, State> {
         <div className={"videoHeader"}>
           <div className={"headerContent"}>
             <h1 className={"header"}>
-              欢迎<a href={"/"} className={"navBar-menu-link"}>
-              <div className={"underline"}>加入我们的团队</div>
-            </a>，一起
-              <div ref={this.textRef}/>
-              <span className={"blinking-cursor"}/>
+              <div>
+                欢迎<a href={"/"} className={"navBar-menu-link"}>
+                <span className={"underline"}>加入我们的团队</span>
+              </a>，
+              </div>
+              <div>
+                一起
+                <span ref={this.textRef}/>
+                <span className={"blinking-cursor"}/>
+              </div>
             </h1>
           </div>
           <div className={"videoBackground"}>
@@ -148,7 +137,7 @@ export default class Home extends React.Component<any, State> {
               我们的基地
             </h2>
             <div className={"classroomTable"}>
-              <div className={"moveTable"} style={this.state.tableOffset}>
+              <div className={"moveTable"}>
                 <ClassroomTable/>
               </div>
               <img className={"moveTablePic"} src={Pic22} alt={""}/>
@@ -206,7 +195,7 @@ export default class Home extends React.Component<any, State> {
               如何加入我们
             </h2>
             <Row>
-              <Col span={12}>
+              <Col span={24} md={12}>
                 <h3 className={"abHead"}>
                   要求
                 </h3>
@@ -219,7 +208,7 @@ export default class Home extends React.Component<any, State> {
                   </p>
                 </div>
               </Col>
-              <Col span={12}>
+              <Col span={24} md={12}>
                 <h3 className={"abHead"}>
                   选拔流程
                 </h3>
@@ -235,8 +224,10 @@ export default class Home extends React.Component<any, State> {
                   </p>
                   <div>
                     <a style={{color: "#32ffb9", fontSize: "18px"}} href={"https://www.luogu.org/"}>洛谷</a>
-                    <a style={{color: "orangered", fontSize: "18px", marginLeft: "20px"}} href={"https://acm.hdu.edu.cn/"}>HDUOJ</a>
-                    <a style={{color: "#84ceff", fontSize: "18px", marginLeft: "20px"}} href={"https://www.hnitoj.cn/"}>HNITOJ</a>
+                    <a style={{color: "orangered", fontSize: "18px", marginLeft: "20px"}}
+                       href={"https://acm.hdu.edu.cn/"}>HDUOJ</a>
+                    <a style={{color: "#84ceff", fontSize: "18px", marginLeft: "20px"}}
+                       href={"https://www.hnitoj.cn/"}>HNITOJ</a>
                   </div>
                   <p>
                     不同组的选拔方式略有不同。
@@ -245,7 +236,7 @@ export default class Home extends React.Component<any, State> {
               </Col>
             </Row>
             <Row>
-              <Col span={12}>
+              <Col span={24} md={12}>
                 <h3 className={"abHead"}>
                   联系方式
                 </h3>
