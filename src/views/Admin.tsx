@@ -2,7 +2,7 @@ import {Button, Form, Input} from "antd";
 import React from "react";
 
 function Admin() {
-  const url = "http://192.168.1.118:8000/extract"
+  const url = "/api/extract"
   const onFinish = (values: any) => {
     let json = JSON.stringify(values);
     fetch(url, {method: "post", body: json})

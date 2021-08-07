@@ -1,6 +1,6 @@
 import bgPic from "../assets/background1.png"
 import "./Join.css"
-import {Button, Form, Input, Modal, Select} from "antd";
+import {Alert, Button, Form, Input, Modal, Select} from "antd";
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 
@@ -10,16 +10,24 @@ function Join() {
   const history = useHistory();
   const [loading, setLoading] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isDisable, setIsDisable] = useState(true);
   const [error, setError] = useState("");
-  const url = "http://192.168.1.118:8000/join"
+  const url = "/api/join"
+  const pingUrl = "/api/ping"
+
+  const pingBackend = (() => {
+    fetch(pingUrl, {method: "get"}).then(() => {
+      setIsDisable(false)
+    })
+    return null
+  })
+  pingBackend()
 
   const onFinish = (values: FormData) => {
     console.log('upload:', values);
     setLoading(true);
     let json = JSON.stringify(values);
-    let myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json;charset=utf-8')
-    fetch(url, {method: "post", body: json, mode: 'cors', headers: myHeaders}).then(
+    fetch(url, {method: "post", body: json}).then(
       r => {
         console.log(r)
         setLoading(false);
@@ -73,76 +81,85 @@ function Join() {
           报名表
         </h1>
       </div>
-      <div className={"form"}>
-        <Form labelCol={{span: 8}} wrapperCol={{span: 16}}
-              initialValues={{remember: true}} onFinish={onFinish}>
-          <Form.Item label={"分组"} name={"group"}
-                     rules={[{required: true, message: "请填写你要加入的组！"}]}>
-            <Select showSearch placeholder="选择你要加入的组" style={{width: 180}}
-                    optionFilterProp="children">
-              {groups}
-            </Select>
-          </Form.Item>
-          <Form.Item label={"姓名"} name={"name"}
-                     rules={[{required: true, message: "请填写你的姓名！"}]}>
-            <Input style={{width: 180}}/>
-          </Form.Item>
-          <Form.Item label={"性别"} name={"sex"}
-                     rules={[{required: false, message: "请填写你的姓别！"}]}>
-            <Select showSearch placeholder="选择你的性别" style={{width: 180}}
-                    optionFilterProp="children">
-              <Option value={"男"}>男</Option>
-              <Option value={"女"}>女</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label={"学院"} name={"series"}
-                     rules={[{required: true, message: "请填写你的学院！"}]}>
-            <Select showSearch placeholder="选择你所属的学院" style={{width: 200}}
-                    optionFilterProp="children">
-              {series}
-            </Select>
-          </Form.Item>
-          <Form.Item label={"专业"} name={"major"}
-                     rules={[{required: true, message: "请填写你的专业！"}]}>
-            <Input placeholder={"全称：物联网工程"} style={{width: 180}}/>
-          </Form.Item>
-          <Form.Item label={"班级"} name={"classes"}
-                     rules={[{required: true, message: "请填写你的班级！"}]}>
-            <Select showSearch placeholder="选择你的班级" style={{width: 180}}
-                    optionFilterProp="children">
-              <Option value={"1"}>1班</Option>
-              <Option value={"2"}>2班</Option>
-              <Option value={"3"}>3班</Option>
-              <Option value={"4"}>4班</Option>
-              <Option value={"5"}>5班</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label={"学号"} name={"studentNum"}
-                     rules={[{required: true, message: "请填写你的学号！"}]}>
-            <Input style={{width: 180}}/>
-          </Form.Item>
-          <Form.Item label={"QQ号"} name={"qqNum"}
-                     rules={[{required: true, message: "我们需要你的QQ号才能联系你！"}]}>
-            <Input style={{width: 180}}/>
-          </Form.Item>
-          <Form.Item label={"手机号"} name={"phoneNum"}
-                     rules={[{required: true, message: "我们需要你的手机号才能联系你！"}]}>
-            <Input style={{width: 180}}/>
-          </Form.Item>
-          <Form.Item labelCol={{span: 8}} wrapperCol={{span: 24}} label={"自我简介"} name={"introduction"}
-                     rules={[{required: false, message: "自我简介能为你增加面试竞争力！"}]}>
-            <Input.TextArea
-              placeholder="自我简介能为你增加面试竞争力"
-              autoSize={{minRows: 3, maxRows: 15}}
-              style={{width: "80vw", maxWidth: 680}}
-            />
-          </Form.Item>
-          <Form.Item wrapperCol={{span: 16}} style={{textAlign: "center"}}>
-            <Button type="primary" htmlType="submit" loading={loading}>
-              提交
-            </Button>
-          </Form.Item>
-        </Form>
+      <div className={"joinContent"}>
+        <div className={"alert"}>
+          {
+            isDisable &&
+            <Alert message="Error Text" type="error"/>
+          }
+        </div>
+        <div className={"form"}>
+          <Form labelCol={{span: 8}} wrapperCol={{span: 16}}
+                initialValues={{remember: true}} onFinish={onFinish}>
+            <Form.Item label={"分组"} name={"group"}
+                       rules={[{required: true, message: "请填写你要加入的组！"}]}>
+              <Select showSearch placeholder="选择你要加入的组" style={{width: 180}} disabled={isDisable}
+                      optionFilterProp="children">
+                {groups}
+              </Select>
+            </Form.Item>
+            <Form.Item label={"姓名"} name={"name"}
+                       rules={[{required: true, message: "请填写你的姓名！"}]}>
+              <Input style={{width: 180}} disabled={isDisable}/>
+            </Form.Item>
+            <Form.Item label={"性别"} name={"sex"}
+                       rules={[{required: false, message: "请填写你的姓别！"}]}>
+              <Select showSearch placeholder="选择你的性别" style={{width: 180}} disabled={isDisable}
+                      optionFilterProp="children">
+                <Option value={"男"}>男</Option>
+                <Option value={"女"}>女</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label={"学院"} name={"series"}
+                       rules={[{required: true, message: "请填写你的学院！"}]}>
+              <Select showSearch placeholder="选择你所属的学院" style={{width: 200}} disabled={isDisable}
+                      optionFilterProp="children">
+                {series}
+              </Select>
+            </Form.Item>
+            <Form.Item label={"专业"} name={"major"}
+                       rules={[{required: true, message: "请填写你的专业！"}]}>
+              <Input placeholder={"全称：物联网工程"} style={{width: 180}} disabled={isDisable}/>
+            </Form.Item>
+            <Form.Item label={"班级"} name={"classes"}
+                       rules={[{required: true, message: "请填写你的班级！"}]}>
+              <Select showSearch placeholder="选择你的班级" style={{width: 180}} disabled={isDisable}
+                      optionFilterProp="children">
+                <Option value={"1"}>1班</Option>
+                <Option value={"2"}>2班</Option>
+                <Option value={"3"}>3班</Option>
+                <Option value={"4"}>4班</Option>
+                <Option value={"5"}>5班</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label={"学号"} name={"studentNum"}
+                       rules={[{required: true, message: "请填写你的学号！"}]}>
+              <Input style={{width: 180}} disabled={isDisable}/>
+            </Form.Item>
+            <Form.Item label={"QQ号"} name={"qqNum"}
+                       rules={[{required: true, message: "我们需要你的QQ号才能联系你！"}]}>
+              <Input style={{width: 180}} disabled={isDisable}/>
+            </Form.Item>
+            <Form.Item label={"手机号"} name={"phoneNum"}
+                       rules={[{required: true, message: "我们需要你的手机号才能联系你！"}]}>
+              <Input style={{width: 180}} disabled={isDisable}/>
+            </Form.Item>
+            <Form.Item labelCol={{span: 8}} wrapperCol={{span: 24}} label={"自我简介"} name={"introduction"}
+                       rules={[{required: false, message: "自我简介能为你增加面试竞争力！"}]}>
+              <Input.TextArea
+                placeholder="自我简介能为你增加面试竞争力"
+                autoSize={{minRows: 3, maxRows: 15}}
+                style={{width: "80vw", maxWidth: 680}}
+                disabled={isDisable}
+              />
+            </Form.Item>
+            <Form.Item wrapperCol={{span: 16}} style={{textAlign: "center"}}>
+              <Button type="primary" htmlType="submit" loading={loading} disabled={isDisable}>
+                提交
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
       <div style={{marginTop: "120px"}}>
         <p>
