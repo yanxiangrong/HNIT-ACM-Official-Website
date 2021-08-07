@@ -4,6 +4,7 @@ import About from "../views/About";
 import Join from "../views/Join";
 import Photos from "../views/Photos";
 import ResultPage from "../views/ResultPage";
+import Admin from "../views/Admin";
 
 function ChildRoutes() {
   return (
@@ -22,6 +23,9 @@ function ChildRoutes() {
       </Route>
       <Route path={"/result"}>
         <ResultPage/>
+      </Route>
+      <Route path={"/admin"}>
+        <Admin/>
       </Route>
       <Redirect from={"/"} to={"/home"}/>
     </Switch>

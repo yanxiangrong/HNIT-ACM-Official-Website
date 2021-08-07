@@ -1,31 +1,52 @@
 import bgPic from "../assets/background1.png"
 import "./Join.css"
-import {Button, Form, Input, Select} from "antd";
-import React from "react";
+import {Button, Form, Input, Modal, Select} from "antd";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 
 const {Option} = Select;
 
 function Join() {
   const history = useHistory();
+  const [loading, setLoading] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [error, setError] = useState("");
   const url = "http://192.168.1.118:8000/join"
 
   const onFinish = (values: FormData) => {
-    console.log('Success:', values);
+    console.log('upload:', values);
+    setLoading(true);
     let json = JSON.stringify(values);
-    fetch(url, {method: "post", body: json}).then(
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json;charset=utf-8')
+    fetch(url, {method: "post", body: json, mode: 'cors', headers: myHeaders}).then(
       r => {
         console.log(r)
-        history.push({pathname: "/result", state: {status: "success", title: "提交成功！"}})
+        setLoading(false);
+        if (r.status === 200) {
+          return r.json().then(json => {
+            history.push({
+              pathname: "/result",
+              state: {status: "success", title: "提交成功！", subTitle: JSON.stringify(json)}
+            })
+          })
+        } else {
+          return r.json().then(json => {
+            setIsModalVisible(true)
+            setError(JSON.stringify(json))
+          })
+        }
       }
     ).catch(reason => {
-        console.log(reason)
+      console.log(reason)
+      setLoading(false);
+      setIsModalVisible(true)
+      setError(reason.toString())
     })
   };
 
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+  const handleCancel = () => {
+    setIsModalVisible(false);
   };
 
   const seriesList: string[] = ["智能制造与机械工程学院", "材料科学与工程学院", "安全与管理工程学院", "电气与信息工程学院",
@@ -40,6 +61,12 @@ function Join() {
 
   return (
     <div>
+      <Modal title="提交失败" visible={isModalVisible} onCancel={handleCancel} footer={
+        <Button key="ok" onClick={handleCancel}>
+          确定
+        </Button>}>
+        <code>{error}</code>
+      </Modal>
       <div className={"picBack"}>
         <img className={"bgPic"} src={bgPic} alt={""}/>
         <h1 className={"pageTitle"}>
@@ -48,7 +75,7 @@ function Join() {
       </div>
       <div className={"form"}>
         <Form labelCol={{span: 8}} wrapperCol={{span: 16}}
-              initialValues={{remember: true}} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+              initialValues={{remember: true}} onFinish={onFinish}>
           <Form.Item label={"分组"} name={"group"}
                      rules={[{required: true, message: "请填写你要加入的组！"}]}>
             <Select showSearch placeholder="选择你要加入的组" style={{width: 180}}
@@ -103,7 +130,7 @@ function Join() {
             <Input style={{width: 180}}/>
           </Form.Item>
           <Form.Item labelCol={{span: 8}} wrapperCol={{span: 24}} label={"自我简介"} name={"introduction"}
-                     rules={[{required: false, message: "我们需要你的手机号才能联系你！"}]}>
+                     rules={[{required: false, message: "自我简介能为你增加面试竞争力！"}]}>
             <Input.TextArea
               placeholder="自我简介能为你增加面试竞争力"
               autoSize={{minRows: 3, maxRows: 15}}
@@ -111,11 +138,19 @@ function Join() {
             />
           </Form.Item>
           <Form.Item wrapperCol={{span: 16}} style={{textAlign: "center"}}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               提交
             </Button>
           </Form.Item>
         </Form>
+      </div>
+      <div style={{marginTop: "120px"}}>
+        <p>
+          对新同学：提交报名表后请加入QQ群，以免错过重要消息。
+        </p>
+        <p>
+          对管理员：在<a target={"_blank"} href={"/admin"} rel={"noreferrer"}>此链接</a>可以下载报名表。
+        </p>
       </div>
       {/*<Redirect to={{pathname: "/result", state: {status: "success", title: "提交成功！"}}}/>*/}
     </div>

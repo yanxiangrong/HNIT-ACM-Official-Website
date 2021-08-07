@@ -7,6 +7,7 @@ import "./ResultPage.css"
 interface State {
   status: ResultStatusType
   title: string
+  subTitle:string
 }
 
 export default function ResultPage() {
@@ -18,6 +19,7 @@ export default function ResultPage() {
       <Result style={{marginTop: "140px"}}
               status= {state.status}
               title= {state.title}
+              subTitle={state.subTitle}
               extra={[
                 <Button type="primary" key={"home"} href={"/"}>
                   返回主页
