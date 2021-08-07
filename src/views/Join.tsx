@@ -16,8 +16,10 @@ function Join() {
   const pingUrl = "/api/ping"
 
   const pingBackend = (() => {
-    fetch(pingUrl, {method: "get"}).then(() => {
-      setIsDisable(false)
+    fetch(pingUrl, {method: "get"}).then((r) => {
+      if (r.status === 200) {
+        setIsDisable(false)
+      }
     })
     return null
   })
@@ -144,12 +146,12 @@ function Join() {
                        rules={[{required: true, message: "我们需要你的手机号才能联系你！"}]}>
               <Input style={{width: 180}} disabled={isDisable}/>
             </Form.Item>
-            <Form.Item labelCol={{span: 8}} wrapperCol={{span: 24}} label={"自我简介"} name={"introduction"}
+            <Form.Item label={"自我简介"} name={"introduction"}
                        rules={[{required: false, message: "自我简介能为你增加面试竞争力！"}]}>
               <Input.TextArea
                 placeholder="自我简介能为你增加面试竞争力"
                 autoSize={{minRows: 3, maxRows: 15}}
-                style={{width: "80vw", maxWidth: 680}}
+                style={{width: "20em", maxWidth: 680, minWidth: "100px"}}
                 disabled={isDisable}
               />
             </Form.Item>
