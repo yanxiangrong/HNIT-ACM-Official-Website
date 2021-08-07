@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# 湖南工学院ACM官网
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,3 +44,32 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## 安装 Docker
+
+```shell
+curl -fsSL https://test.docker.com -o test-docker.sh
+sudo sh test-docker.sh
+```
+
+## 安装 Docker
+
+```shell
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+## 使用 Docker
+
+### `docker build -t acm-web-nginx .`
+
+构建镜像
+
+### `docker run --restart=always --name acm-web-nginx -d acm-web-nginx`
+
+运行 Docker 实例
+
+### `docker run --restart=always --name acm-web-nginx -d -p 80:80 acm-web-nginx`
+
+开放外部端口运行 Docker 实例
+

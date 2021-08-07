@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: acm-web-nginx
+    volumes:
+      - ./build:/var/www/web
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./log:/var/log/nginx
+    ports:
+      - "80:80"
+    restart: always
+#    command: [ nginx,'-g','daemon off;' ]
