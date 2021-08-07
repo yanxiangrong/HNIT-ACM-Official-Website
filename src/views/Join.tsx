@@ -85,7 +85,7 @@ function Join() {
         <div className={"alert"}>
           {
             isDisable &&
-            <Alert message="Error Text" type="error"/>
+            <Alert message="暂时无法报名" type="error"/>
           }
         </div>
         <div className={"form"}>
