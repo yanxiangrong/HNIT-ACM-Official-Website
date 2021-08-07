@@ -194,7 +194,7 @@ export default class Home extends React.Component<any, State> {
             <h2>
               如何加入我们
             </h2>
-            <Row>
+            <Row gutter={24}>
               <Col span={24} md={12}>
                 <h3 className={"abHead"}>
                   要求
@@ -235,7 +235,7 @@ export default class Home extends React.Component<any, State> {
                 </div>
               </Col>
             </Row>
-            <Row>
+            <Row gutter={16}>
               <Col span={24} md={12}>
                 <h3 className={"abHead"}>
                   联系方式

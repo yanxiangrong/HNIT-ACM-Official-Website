@@ -266,6 +266,7 @@
     width: auto;
     object-fit: contain;
     max-height: 500px;
+    margin-bottom: 1rem;
 }
 
 .QQ-link {
@@ -336,7 +337,7 @@
 
     .moveTablePic {
         margin-left: 5%;
-        width: fit-content;
+        width: auto;
         object-fit: contain;
         height: 500px;
         transform: translateY(-40px);
@@ -344,7 +345,7 @@
 
     .tablePic {
         margin-right: 5%;
-        width: fit-content;
+        width: auto;
         object-fit: contain;
         height: 500px;
         transform: translateY(-180px);
@@ -354,6 +355,7 @@
     .group {
         margin-top: 40px;
         display: flex;
+        align-items: flex-start;
         flex-direction: column;
         justify-content: center;
     }
@@ -367,7 +369,7 @@
 
     .moveTablePic {
         margin-left: 10%;
-        width: fit-content;
+        width: auto;
         object-fit: contain;
         height: 500px;
         transform: translateY(-40px);
@@ -375,7 +377,7 @@
 
     .tablePic {
         margin-right: 10%;
-        width: fit-content;
+        width: auto;
         object-fit: contain;
         height: 500px;
         transform: translateY(-180px);
