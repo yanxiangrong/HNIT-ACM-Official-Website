@@ -1,0 +1,54 @@
+
+.timeline {
+    margin-top: 180px;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: auto;
+}
+
+.header-2 {
+    text-align: left;
+}
+
+.paragraphText {
+    text-indent: 2em;
+    text-align: left;
+}
+
+.picRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardContent {
+    margin: 0;
+}
+
+@media (max-width: 62.5rem) {
+    .cardContent {
+        margin: -23px;
+    }
+}
+
+@media (max-width: 52.5rem) {
+    .timeline {
+        margin-top: 180px;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: auto;
+    }
+
+    .picRow {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 37.5rem) {
+    .timeline {
+        margin-top: 180px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: calc(100vw - 20px);
+    }
+}

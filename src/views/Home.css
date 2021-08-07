@@ -264,6 +264,7 @@
 .tableRewardPic {
     margin-right: 5%;
     width: auto;
+    max-width: 100%;
     object-fit: contain;
     max-height: 500px;
     margin-bottom: 1rem;
