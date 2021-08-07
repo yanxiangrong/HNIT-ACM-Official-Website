@@ -200,7 +200,7 @@
         top: 14px;
         left: 12px;
     }
-    10%{
+    10% {
         top: 16px;
         left: 13px;
     }
@@ -268,7 +268,18 @@
     max-height: 500px;
 }
 
-@media (max-width: 680px) {
+.QQ-link {
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+}
+
+.QQ-link:hover {
+    color: #FB7299;
+}
+
+
+@media (max-width: 42.5rem) {
 
     .moveTablePic {
         display: none;
@@ -288,6 +299,7 @@
         position: absolute;
         z-index: 3;
     }
+
     .header {
         display: flex;
         flex-direction: column;
@@ -298,7 +310,7 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 62.5rem) {
     .moveTable {
         width: fit-content;
         position: relative;
@@ -308,7 +320,7 @@
     }
 }
 
-@media (max-width: 830px) {
+@media (max-width: 51.875rem) {
     .moveTable {
         width: fit-content;
         position: relative;
@@ -316,6 +328,7 @@
         left: 0;
         animation: none;
     }
+
     .paragraph {
         margin-left: 5%;
         margin-right: 5%;
@@ -346,11 +359,12 @@
     }
 }
 
-@media (min-width: 830px) {
+@media (min-width: 51.875rem) {
     .paragraph {
         margin-left: 10%;
         margin-right: 10%;
     }
+
     .moveTablePic {
         margin-left: 10%;
         width: fit-content;

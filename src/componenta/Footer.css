@@ -62,7 +62,7 @@
     border-color: #FB7299;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .footerHead {
         color: #333;
         margin-left: 20px;

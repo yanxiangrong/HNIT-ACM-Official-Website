@@ -105,7 +105,7 @@
     color: #FB7299;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .navBtn {
         display: inline-block;
     }

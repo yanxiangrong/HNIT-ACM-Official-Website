@@ -85,7 +85,7 @@ export default class Home extends React.Component<any, State> {
           <div className={"headerContent"}>
             <h1 className={"header"}>
               <div>
-                欢迎<a href={"/"} className={"navBar-menu-link"}>
+                欢迎<a href={"/join"} className={"navBar-menu-link"}>
                 <span className={"underline"}>加入我们的团队</span>
               </a>，
               </div>
@@ -242,7 +242,9 @@ export default class Home extends React.Component<any, State> {
                 </h3>
                 <div className={"groupText"}>
                   <p>
-                    交流Q群：876077941
+                    交流Q群：<a target={"_blank"} rel={"noreferrer"} href={"https://jq.qq.com/?_wv=1027&k=S0zNYN1H"} className={"QQ-link"}>
+                    <span className={"underline"}>876077941</span>
+                  </a>
                   </p>
                   <p>
                     欢迎大家进群讨论问题！

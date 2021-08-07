@@ -44,7 +44,7 @@ function ClassroomTable() {
     },
     {
       key: '5',
-      number: "2504",
+      number: "2508",
       name: "物联网实验室",
       detail: "新申请的教室，有2台空调，有千兆网。"
     },

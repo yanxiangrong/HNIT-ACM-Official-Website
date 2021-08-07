@@ -56,7 +56,7 @@ export class Navbar extends React.Component<any, State> {
     const menuItems: menuItem[] = [
       {name: "加入我们", href: "/join"},
       {name: "湖工OJ", href: "https://www.hnitoj.cn/"},
-      {name: "照片墙", href: "/"},
+      {name: "照片墙", href: "/photos"},
       {name: "关于", href: "/about"}]
     const menu = menuItems.map((item) => {
       return (
