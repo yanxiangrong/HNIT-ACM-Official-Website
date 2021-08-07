@@ -73,3 +73,5 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 开放外部端口运行 Docker 实例
 
+
+### `sudo docker-compose up -d`
