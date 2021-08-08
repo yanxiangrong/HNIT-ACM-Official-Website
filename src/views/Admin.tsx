@@ -17,7 +17,6 @@ function Admin() {
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            console.log(response.headers)
             let string = response.headers.get('Content-Disposition')
             let filename;
             if (string == null) {
