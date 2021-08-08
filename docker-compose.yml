@@ -6,6 +6,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: acm-web-nginx
+    hostname: acmweb
     volumes:
       - ./build:/var/www/web
       - ./nginx/conf.d:/etc/nginx/conf.d
