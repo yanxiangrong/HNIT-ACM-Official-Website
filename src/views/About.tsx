@@ -1,7 +1,8 @@
 import React from "react";
 import bgPic from "../assets/QQ20210806214458.jpg";
 import "./About.css"
-import {Avatar} from "antd";
+import {Avatar, Tag} from "antd";
+import GithubOutlined from "@ant-design/icons/GithubOutlined";
 
 interface Author {
   avatar: string
@@ -130,6 +131,16 @@ export default class About extends React.Component<any, any> {
           <ul className={"users"}>
             {other}
           </ul>
+        </div>
+        <div>
+          <h3>
+            本项目已在 Github 上开源
+          </h3>
+          <a target={"_blank"} rel={"noreferrer"} href={"https://github.com/hnit-acm/HNIT-ACM-Official-Website"}>
+            <Tag icon={<GithubOutlined />} color="#24292E">
+              HNIT-ACM-Official-Website
+            </Tag>
+          </a>
         </div>
       </div>
     );

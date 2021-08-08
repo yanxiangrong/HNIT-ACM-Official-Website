@@ -1,7 +1,7 @@
 # 湖南工学院ACM官网
 
-官网地址 <https://web.hnitoj.cn/home>
-开发语言: TypeScript, css
+官网地址 <https://web.hnitoj.cn/home>  
+开发语言: TypeScript, css  
 框架: React, Ant Design
 
 ## 部署
