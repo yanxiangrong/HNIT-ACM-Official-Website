@@ -28,6 +28,16 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
+在树莓派等 Arm 平台
+
+````shell
+sudo apt-get install libffi-dev
+sudo apt-get install libssl-dev
+sudo apt-get update
+sudo apt-get install -y python python-pip
+sudo pip install docker-compose
+````
+
 然后进入项目目录
 创建几个文件夹
 
