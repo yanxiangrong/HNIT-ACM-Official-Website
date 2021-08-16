@@ -1,0 +1,63 @@
+.weatherIcon {
+    height: 48px;
+    width: 48px;
+}
+
+.smallIcon {
+    height: 36px;
+    width: 36px;
+}
+
+.weatherSpace {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: color .2s ease-in-out;
+}
+
+.cardContentStyle {
+    width: 26rem;
+}
+
+.contentSpace {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.weatherSpace:hover {
+    color: #FB7299;
+}
+
+.weatherElem {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.weatherText {
+    font-variant-numeric: normal;
+}
+
+.contentItem {
+    margin-right: 10px;
+    transition: color .2s ease-in-out;
+}
+
+.contentItem:hover {
+    color: #FB7299;
+}
+
+.bigIcon {
+    width: 60rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .weatherElem {
+        display: none;
+    }
+}

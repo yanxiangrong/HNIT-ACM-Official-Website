@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "../assets/hnit-acm-logo-left-right.png"
 import MenuOutlined from "@ant-design/icons/MenuOutlined";
 import {Button} from "antd";
+import Weather from "./Weather";
 
 interface menuItem {
   name: string
@@ -74,6 +75,9 @@ export class Navbar extends React.Component<any, State> {
               <img className={"navBar-logo"} src={Logo} alt={"HNIT-ACM"}/>
               <title className={"navBar-logo-title"}>HNIT-ACM</title>
             </a>
+            <div className={"weather"}>
+              <Weather/>
+            </div>
           </div>
           <div className={"navBar-right"}>
             <ul className={this.state.navBarOpen ?

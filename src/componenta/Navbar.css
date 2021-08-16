@@ -105,6 +105,16 @@
     color: #FB7299;
 }
 
+.weather {
+    margin-left: 40px;
+}
+
+@media (max-width: 768px) {
+    .weather {
+        display: none;
+    }
+}
+
 @media (max-width: 40rem) {
     .navBtn {
         display: inline-block;
