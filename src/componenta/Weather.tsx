@@ -77,7 +77,7 @@ export default class Weather extends React.Component<any, State> {
       })
     }).catch(e => {
       console.log(e)
-      setTimeout(this.getWeather, this.timeSleep)
+      setTimeout(this.getWeather, this.timeSleep * 1000)
       this.timeSleep *= 2
     })
       .finally(() => this.setState({loading: false}))
