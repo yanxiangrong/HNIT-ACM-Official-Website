@@ -1,7 +1,7 @@
 import React from "react";
 import "./Weather.css"
-import {Popover, Skeleton, Spin, Tooltip} from 'antd';
-import {LoadingOutlined} from '@ant-design/icons';
+import {Button, Popover, Skeleton, Spin, Tooltip} from 'antd';
+import {LoadingOutlined, SyncOutlined} from '@ant-design/icons';
 
 
 const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>
@@ -29,6 +29,7 @@ export default class Weather extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
     this.getWeather = this.getWeather.bind(this)
+    this.syncButtonHandle = this.syncButtonHandle.bind(this)
     this.state = {
       loading: true, icon: "not-available", temp: -1, description: "",
       feelsLike: -1,
@@ -51,6 +52,11 @@ export default class Weather extends React.Component<any, State> {
   iconUrlSuf = ".svg"
 
   timeSleep = 2;
+
+  syncButtonHandle() {
+    this.setState({loading: true})
+    this.getWeather()
+  }
 
   getWeather() {
     fetch(this.weatherAPI).then(r => {
@@ -216,15 +222,22 @@ export default class Weather extends React.Component<any, State> {
     )
 
     return (
-      <Popover placement="bottom" title={"衡阳"} content={cardContent}>
+      <Popover placement="bottom" title={
+        <div className={"popoverTitle"}>
+          <h3>衡阳</h3>
+          <Button shape="circle" type="text" onClick={this.syncButtonHandle}><SyncOutlined spin={loading}/></Button>
+        </div>
+      } content={cardContent}>
         <div className={"weatherSpace"}>
           <img className={"weatherIcon"} src={iconUrl} alt={icon}/>
-          {loading && <Spin indicator={antIcon}/>}
-          {!loading &&
-          <div className={"weatherText"}>
-            <span className={"weatherElem"}>{temp} ℃</span>
-            <span className={"weatherElem"}>{description}</span>
-          </div>}
+          <div className={"weatherTextSpace"}>
+            {loading && <Spin indicator={antIcon}/>}
+            {!loading &&
+            <div className={"weatherText"}>
+              <span className={"weatherElem"}>{temp} ℃</span>
+              <span className={"weatherElem"}>{description}</span>
+            </div>}
+          </div>
         </div>
       </Popover>
     )

@@ -15,8 +15,16 @@
     transition: color .2s ease-in-out;
 }
 
+.weatherTextSpace {
+    width: 12em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .cardContentStyle {
     width: 26rem;
+    height: 15rem;
 }
 
 .contentSpace {
@@ -56,8 +64,15 @@
     align-items: center;
 }
 
+.popoverTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media (max-width: 900px) {
-    .weatherElem {
+    .weatherTextSpace {
         display: none;
     }
 }

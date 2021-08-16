@@ -106,7 +106,7 @@
 }
 
 .weather {
-    margin-left: 40px;
+    margin-left: 1em;
 }
 
 @media (max-width: 768px) {
@@ -115,7 +115,7 @@
     }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 680px) {
     .navBtn {
         display: inline-block;
     }
