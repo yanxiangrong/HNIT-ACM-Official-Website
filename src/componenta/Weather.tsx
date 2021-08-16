@@ -165,14 +165,16 @@ export default class Weather extends React.Component<any, State> {
             </div>
 
             <div className={"contentItem"}>
-              <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/windsock.svg"}/>
+              <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/wind-beaufort-" +
+              Math.round(Math.pow((windSpeed / 0.836), 2.0 / 3.0)).toString() + ".svg"}/>
               <Tooltip title="风速">
                 <span>{windSpeed} m/s</span>
               </Tooltip>
             </div>
 
             <div className={"contentItem"}>
-              <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/compass.svg"}/>
+              <img className={"smallIcon"} style={{transform: "rotate(" + windDeg.toString() + "deg)"}} alt={""}
+                   src={"/assets/weather-icons/production/line/all/compass.svg"}/>
               <Tooltip title="风向">
                 <span>{windDeg} °</span>
               </Tooltip>
