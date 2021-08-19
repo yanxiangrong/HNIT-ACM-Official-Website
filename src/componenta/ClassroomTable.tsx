@@ -29,33 +29,43 @@ function ClassroomTable() {
     {
       key: '2',
       number: "2206",
-      name: "ACM团队工作室",
+      name: "ACM团队工作室。",
     },
     {
       key: '3',
+      number: "2202",
+      name: "硬件工作坊。",
+    },
+    {
+      key: '4',
+      number: "2204",
+      name: "软件工作坊。",
+    },
+    {
+      key: '5',
       number: "2416",
       name: "开放机房",
       detail: "ACM晚训机房。"
     },
     {
-      key: '4',
+      key: '6',
       number: "2518",
       name: "物联网实验室",
     },
     {
-      key: '5',
+      key: '7',
       number: "2508",
       name: "物联网实验室",
       detail: "新申请的教室，有2台空调，有千兆网。"
     },
     {
-      key: '6',
+      key: '8',
       number: "2606",
       name: "软件工作室",
       detail: "ACM数据中心。"
     },
     {
-      key: '7',
+      key: '9',
       number: "2607",
       name: "软件工作室",
     },
