@@ -29,17 +29,18 @@ function ClassroomTable() {
     {
       key: '2',
       number: "2206",
-      name: "ACM团队工作室。",
+      name: "ACM团队工作室",
+      detail: "ACM实训室",
     },
     {
       key: '3',
       number: "2202",
-      name: "硬件工作坊。",
+      name: "硬件工作坊",
     },
     {
       key: '4',
       number: "2204",
-      name: "软件工作坊。",
+      name: "软件工作坊",
     },
     {
       key: '5',

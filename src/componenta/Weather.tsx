@@ -234,7 +234,7 @@ export default class Weather extends React.Component<any, State> {
             {loading && <Spin indicator={antIcon}/>}
             {!loading &&
             <div className={"weatherText"}>
-              <span className={"weatherElem"}>{temp} ℃</span>
+              <span className={"weatherElem"}>{Math.round(temp)} ℃</span>
               <span className={"weatherElem"}>{description}</span>
             </div>}
           </div>
