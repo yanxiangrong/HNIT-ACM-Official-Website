@@ -2,7 +2,7 @@ FROM nginx
 
 RUN echo "Asia/shanghai" > /etc/timezone
 RUN rm -rf /etc/localtime
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN mkdir /var/log/nginx/web
 

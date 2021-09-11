@@ -119,21 +119,25 @@ function Join() {
                 {series}
               </Select>
             </Form.Item>
-            <Form.Item label={"专业"} name={"major"}
-                       rules={[{required: true, message: "请填写你的专业！"}]}>
-              <Input placeholder={"全称：物联网工程"} style={{width: 180}} disabled={isDisable}/>
-            </Form.Item>
             <Form.Item label={"班级"} name={"classes"}
                        rules={[{required: true, message: "请填写你的班级！"}]}>
-              <Select showSearch placeholder="选择你的班级" style={{width: 180}} disabled={isDisable}
-                      optionFilterProp="children">
-                <Option value={"1"}>1班</Option>
-                <Option value={"2"}>2班</Option>
-                <Option value={"3"}>3班</Option>
-                <Option value={"4"}>4班</Option>
-                <Option value={"5"}>5班</Option>
-              </Select>
+              <Input placeholder={"如：物联2001"} style={{width: 180}} disabled={isDisable}/>
             </Form.Item>
+            {/*<Form.Item label={"专业"} name={"major"}*/}
+            {/*           rules={[{required: true, message: "请填写你的专业！"}]}>*/}
+            {/*  <Input placeholder={"全称：物联网工程"} style={{width: 180}} disabled={isDisable}/>*/}
+            {/*</Form.Item>*/}
+            {/*<Form.Item label={"班级"} name={"classes"}*/}
+            {/*           rules={[{required: true, message: "请填写你的班级！"}]}>*/}
+            {/*  <Select showSearch placeholder="选择你的班级" style={{width: 180}} disabled={isDisable}*/}
+            {/*          optionFilterProp="children">*/}
+            {/*    <Option value={"1"}>1班</Option>*/}
+            {/*    <Option value={"2"}>2班</Option>*/}
+            {/*    <Option value={"3"}>3班</Option>*/}
+            {/*    <Option value={"4"}>4班</Option>*/}
+            {/*    <Option value={"5"}>5班</Option>*/}
+            {/*  </Select>*/}
+            {/*</Form.Item>*/}
             <Form.Item label={"学号"} name={"studentNum"}
                        rules={[{required: true, message: "请填写你的学号！"}]}>
               <Input style={{width: 180}} disabled={isDisable}/>
