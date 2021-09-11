@@ -155,6 +155,7 @@ function Join() {
               <Input.TextArea
                 placeholder="自我简介能为你增加面试竞争力"
                 autoSize={{minRows: 3, maxRows: 15}}
+                maxLength={2000}
                 style={{width: "20em", maxWidth: 680, minWidth: "100px"}}
                 disabled={isDisable}
               />
