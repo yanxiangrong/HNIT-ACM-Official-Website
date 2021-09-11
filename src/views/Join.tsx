@@ -102,7 +102,7 @@ function Join() {
             </Form.Item>
             <Form.Item label={"姓名"} name={"name"}
                        rules={[{required: true, message: "请填写你的姓名！"}]}>
-              <Input style={{width: 180}} disabled={isDisable}/>
+              <Input style={{width: 180}} disabled={isDisable} maxLength={20}/>
             </Form.Item>
             <Form.Item label={"性别"} name={"sex"}
                        rules={[{required: false, message: "请填写你的姓别！"}]}>
@@ -121,7 +121,7 @@ function Join() {
             </Form.Item>
             <Form.Item label={"班级"} name={"classes"}
                        rules={[{required: true, message: "请填写你的班级！"}]}>
-              <Input placeholder={"如：物联2001"} style={{width: 180}} disabled={isDisable}/>
+              <Input placeholder={"如：物联2001"} style={{width: 180}} disabled={isDisable} maxLength={20}/>
             </Form.Item>
             {/*<Form.Item label={"专业"} name={"major"}*/}
             {/*           rules={[{required: true, message: "请填写你的专业！"}]}>*/}
@@ -140,15 +140,15 @@ function Join() {
             {/*</Form.Item>*/}
             <Form.Item label={"学号"} name={"studentNum"}
                        rules={[{required: true, message: "请填写你的学号！"}]}>
-              <Input style={{width: 180}} disabled={isDisable}/>
+              <Input style={{width: 180}} disabled={isDisable} maxLength={20}/>
             </Form.Item>
             <Form.Item label={"QQ号"} name={"qqNum"}
                        rules={[{required: true, message: "我们需要你的QQ号才能联系你！"}]}>
-              <Input style={{width: 180}} disabled={isDisable}/>
+              <Input style={{width: 180}} disabled={isDisable} maxLength={20}/>
             </Form.Item>
             <Form.Item label={"手机号"} name={"phoneNum"}
                        rules={[{required: true, message: "我们需要你的手机号才能联系你！"}]}>
-              <Input style={{width: 180}} disabled={isDisable}/>
+              <Input style={{width: 180}} disabled={isDisable} maxLength={20}/>
             </Form.Item>
             <Form.Item label={"自我简介"} name={"introduction"}
                        rules={[{required: false, message: "自我简介能为你增加面试竞争力！"}]}>
