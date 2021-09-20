@@ -10,69 +10,93 @@ interface Author {
   name: string
 }
 
-export default class About extends React.Component<any, any> {
+interface IState {
+  leadAuthors: Author[]
+  secondaryAuthors: Author[]
+  otherAuthors: Author[]
+}
+
+export default class About extends React.Component<any, IState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {leadAuthors: [], secondaryAuthors: [], otherAuthors: []}
+  }
+
+  componentDidMount() {
+    let leadAuthorsLogin = [
+      "yanxiangrong"
+    ]
+
+    let secondaryAuthorsLogin = [
+      "dongzhiwei-git",
+      "coolbreeze2",
+      "nieaowei",
+    ]
+
+    let otherAuthorsLogin = [
+      "yinrenxin",
+      "Chris51498",
+      "FYanesu",
+      "jiajixiang",
+      "Jourofant",
+      "leoiwan",
+      "lusshao",
+      "Mrsssswan",
+      "onionchanowo",
+      "YaChenW",
+    ]
+
+    let leadAuthors: Author[] = [];
+    leadAuthorsLogin.forEach((value) => {
+      let url = "https://api.github.com/users/" + value
+      fetch(url)
+        .then(r => r.json())
+        .then(myJson => {
+          let name = myJson["name"] == null ? myJson["login"] : myJson["name"]
+          leadAuthors.push({
+            avatar: myJson["avatar_url"],
+            github: myJson["html_url"],
+            name: name
+          })
+          this.setState({leadAuthors: leadAuthors})
+        })
+    })
+
+    let secondaryAuthors: Author[] = [];
+    secondaryAuthorsLogin.forEach((value) => {
+      let url = "https://api.github.com/users/" + value
+      fetch(url)
+        .then(r => r.json())
+        .then(myJson => {
+          let name = myJson["name"] == null ? myJson["login"] : myJson["name"]
+          secondaryAuthors.push({
+            avatar: myJson["avatar_url"],
+            github: myJson["html_url"],
+            name: name
+          })
+          this.setState({secondaryAuthors: secondaryAuthors})
+        })
+    })
+
+    let otherAuthors: Author[] = [];
+    otherAuthorsLogin.forEach((value) => {
+      let url = "https://api.github.com/users/" + value
+      fetch(url)
+        .then(r => r.json())
+        .then(myJson => {
+          let name = myJson["name"] == null ? myJson["login"] : myJson["name"]
+          otherAuthors.push({
+            avatar: myJson["avatar_url"],
+            github: myJson["html_url"],
+            name: name
+          })
+          this.setState({otherAuthors: otherAuthors})
+        })
+    })
+  }
+
   render() {
-    const leadAuthors: Author[] = [{
-      avatar: "https://avatars.githubusercontent.com/u/39958055?s=96&v=4",
-      github: "https://github.com/yanxiangrong",
-      name: "小荣"
-    }]
-
-    const secondaryAuthors: Author[] = [{
-      avatar: "https://avatars.githubusercontent.com/u/60594407?s=96&v=4",
-      github: "https://github.com/dongzhiwei-git",
-      name: "dongzhiwei"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/43947544?s=96&v=4",
-      github: "https://github.com/coolbreeze2",
-      name: "coodyz"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/42961884?s=96&v=4",
-      github: "https://github.com/nieaowei",
-      name: "Nekilc"
-    }]
-
-    const otherAuthors: Author[] = [{
-      avatar: "https://avatars.githubusercontent.com/u/20474807?s=96&v=4",
-      github: "https://github.com/yinrenxin",
-      name: "Joe"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/58461004?s=96&v=4",
-      github: "https://github.com/Chris51498",
-      name: "FreeWei"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/43956605?s=96&v=4",
-      github: "https://github.com/FYanesu",
-      name: "anesu"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/28760037?s=96&v=4",
-      github: "https://github.com/jiajixiang",
-      name: "jiajixiang"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/29854251?s=96&v=4",
-      github: "https://github.com/Jourofant",
-      name: "Jourofant"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/54177415?s=96&v=4",
-      github: "https://github.com/leoiwan",
-      name: "leoiwan"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/38729399?s=96&v=4",
-      github: "https://github.com/lusshao",
-      name: "lusshao"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/25981361?s=96&v=4",
-      github: "https://github.com/Mrsssswan",
-      name: "liwanfang"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/39485315?s=96&v=4",
-      github: "https://github.com/onionchanowo",
-      name: "onion"
-    }, {
-      avatar: "https://avatars.githubusercontent.com/u/38676076?s=96&v=4",
-      github: "https://github.com/YaChenW",
-      name: "BlaCat"
-    }]
+    const {leadAuthors, secondaryAuthors, otherAuthors} = this.state
 
     const lead = leadAuthors.map((item) =>
       <li key={item.github} className={"user"}>
@@ -136,8 +160,9 @@ export default class About extends React.Component<any, any> {
           <h3>
             本项目已在 Github 上开源
           </h3>
-          <a target={"_blank"} rel={"noreferrer"} href={"https://github.com/hnit-acm/HNIT-ACM-Official-Website"}>
-            <Tag icon={<GithubOutlined />} color="#24292E">
+          <a target={"_blank"} rel={"noreferrer"}
+             href={"https://github.com/hnit-acm/HNIT-ACM-Official-Website"}>
+            <Tag icon={<GithubOutlined/>} color="#24292E">
               HNIT-ACM-Official-Website
             </Tag>
           </a>
