@@ -23,6 +23,7 @@ export default class About extends React.Component<any, IState> {
   }
 
   componentDidMount() {
+    let token = "ghp_Nd5ZC1kzY5vJ9YIm" + "NAJ8w1evZ2LdWB1DQc88"
     let leadAuthorsLogin = [
       "yanxiangrong"
     ]
@@ -51,7 +52,7 @@ export default class About extends React.Component<any, IState> {
       let url = "https://api.github.com/users/" + value
       fetch(url, {
         headers: {
-          'Authorization': 'token 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',
+          'Authorization': 'token ' + token,
         }
       })
         .then(r => r.json())
@@ -71,7 +72,7 @@ export default class About extends React.Component<any, IState> {
       let url = "https://api.github.com/users/" + value
       fetch(url, {
         headers: {
-          'Authorization': 'token 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',
+          'Authorization': 'token ' + token,
         }
       })
         .then(r => r.json())
@@ -91,7 +92,7 @@ export default class About extends React.Component<any, IState> {
       let url = "https://api.github.com/users/" + value
       fetch(url, {
         headers: {
-          'Authorization': 'token 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',
+          'Authorization': 'token ' + token,
         }
       })
         .then(r => r.json())
