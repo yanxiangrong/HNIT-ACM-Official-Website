@@ -49,7 +49,11 @@ export default class About extends React.Component<any, IState> {
     let leadAuthors: Author[] = [];
     leadAuthorsLogin.forEach((value) => {
       let url = "https://api.github.com/users/" + value
-      fetch(url)
+      fetch(url, {
+        headers: {
+          'Authorization': 'token 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',
+        }
+      })
         .then(r => r.json())
         .then(myJson => {
           let name = myJson["name"] == null ? myJson["login"] : myJson["name"]
@@ -65,7 +69,11 @@ export default class About extends React.Component<any, IState> {
     let secondaryAuthors: Author[] = [];
     secondaryAuthorsLogin.forEach((value) => {
       let url = "https://api.github.com/users/" + value
-      fetch(url)
+      fetch(url, {
+        headers: {
+          'Authorization': 'token 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',
+        }
+      })
         .then(r => r.json())
         .then(myJson => {
           let name = myJson["name"] == null ? myJson["login"] : myJson["name"]
@@ -81,7 +89,11 @@ export default class About extends React.Component<any, IState> {
     let otherAuthors: Author[] = [];
     otherAuthorsLogin.forEach((value) => {
       let url = "https://api.github.com/users/" + value
-      fetch(url)
+      fetch(url, {
+        headers: {
+          'Authorization': 'token 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',
+        }
+      })
         .then(r => r.json())
         .then(myJson => {
           let name = myJson["name"] == null ? myJson["login"] : myJson["name"]
