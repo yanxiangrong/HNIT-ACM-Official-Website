@@ -79,6 +79,14 @@ export default class Home extends React.Component<any, State> {
   }
 
   render() {
+    let videoUrls = ["/assets/Av42322248.mp4", "/assets/Av975686325.mp4"]
+    let playVideoUrl: string
+    if (Math.random() < 0.15) {
+      playVideoUrl = videoUrls[1].toString()
+    } else {
+      playVideoUrl = videoUrls[0].toString()
+    }
+
     return (
       <div>
         <div className={"videoHeader"}>
@@ -115,7 +123,7 @@ export default class Home extends React.Component<any, State> {
                 }
               </style>
               <video id="video" class="videoLoop" autoPlay muted playsInline loop>
-                <source src="/assets/Av42322248.mp4"
+                <source src="` + playVideoUrl + `"
                         type="video/mp4"/>
               </video>`
             }}/>
@@ -242,7 +250,8 @@ export default class Home extends React.Component<any, State> {
                 </h3>
                 <div className={"groupText"}>
                   <p>
-                    交流Q群：<a target={"_blank"} rel={"noreferrer"} href={"https://jq.qq.com/?_wv=1027&k=S0zNYN1H"} className={"QQ-link"}>
+                    交流Q群：<a target={"_blank"} rel={"noreferrer"} href={"https://jq.qq.com/?_wv=1027&k=S0zNYN1H"}
+                            className={"QQ-link"}>
                     <span className={"underline"}>876077941</span>
                   </a>
                   </p>
