@@ -9,6 +9,7 @@ import rewardTable from "../assets/Snipaste_2021-08-06_15-10-42.png"
 
 interface State {
   isMuted: boolean
+  videoUrl: string
 }
 
 export default class Home extends React.Component<any, State> {
@@ -16,7 +17,7 @@ export default class Home extends React.Component<any, State> {
 
   constructor(props: any) {
     super(props)
-    this.state = {isMuted: true}
+    this.state = {isMuted: true, videoUrl: ""}
     this.muteBtuHandle = this.muteBtuHandle.bind(this)
     this.textRef = React.createRef()
   }
@@ -65,6 +66,16 @@ export default class Home extends React.Component<any, State> {
 
   componentDidMount() {
     this.textAnimation()
+
+    let videoUrls = ["/assets/Av42322248.mp4", "/assets/Av975686325.mp4"]
+    let playVideoUrl: string
+    if (Math.random() < 0.15) {
+      playVideoUrl = videoUrls[1].toString()
+    } else {
+      playVideoUrl = videoUrls[0].toString()
+    }
+
+    this.setState({videoUrl: playVideoUrl})
   }
 
   muteBtuHandle() {
@@ -79,13 +90,6 @@ export default class Home extends React.Component<any, State> {
   }
 
   render() {
-    let videoUrls = ["/assets/Av42322248.mp4", "/assets/Av975686325.mp4"]
-    let playVideoUrl: string
-    if (Math.random() < 0.15) {
-      playVideoUrl = videoUrls[1].toString()
-    } else {
-      playVideoUrl = videoUrls[0].toString()
-    }
 
     return (
       <div>
@@ -123,7 +127,7 @@ export default class Home extends React.Component<any, State> {
                 }
               </style>
               <video id="video" class="videoLoop" autoPlay muted playsInline loop>
-                <source src="` + playVideoUrl + `"
+                <source src="` + this.state.videoUrl + `"
                         type="video/mp4"/>
               </video>`
             }}/>
