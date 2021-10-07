@@ -172,7 +172,7 @@
 }
 
 .portfolio {
-    margin-top: 40px;
+    padding-top: 40px;
     margin-bottom: 40px;
 }
 
@@ -332,8 +332,8 @@
     }
 
     .paragraph {
-        margin-left: 5%;
-        margin-right: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     .moveTablePic {
@@ -364,8 +364,8 @@
 
 @media (min-width: 51.875rem) {
     .paragraph {
-        margin-left: 10%;
-        margin-right: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 
     .moveTablePic {

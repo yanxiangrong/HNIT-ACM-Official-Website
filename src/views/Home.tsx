@@ -133,8 +133,8 @@ export default class Home extends React.Component<any, State> {
             }}/>
           </div>
         </div>
-        <div className={"paragraph"}>
-          <section className={"aboutContent"}>
+        <div>
+          <section className={"aboutContent paragraph"} >
             <h2>
               我们的目标
             </h2>
@@ -144,7 +144,7 @@ export default class Home extends React.Component<any, State> {
 
           </section>
           <Divider/>
-          <section className={"portfolio"}>
+          <section className={"portfolio paragraph"}>
             <h2>
               我们的基地
             </h2>
@@ -156,7 +156,7 @@ export default class Home extends React.Component<any, State> {
             </div>
           </section>
           <Divider/>
-          <section className={"portfolio"}>
+          <section className={"portfolio paragraph"} style={{background: '#dee4f0'}}>
             <h2>
               我们的分组
             </h2>
@@ -186,7 +186,7 @@ export default class Home extends React.Component<any, State> {
             </div>
           </section>
           <Divider/>
-          <section className={"portfolio"}>
+          <section className={"portfolio paragraph"}>
             <h2>
               学校的支持
             </h2>
@@ -202,7 +202,7 @@ export default class Home extends React.Component<any, State> {
             </div>
           </section>
           <Divider/>
-          <section className={"portfolio"}>
+          <section className={"portfolio paragraph"} style={{background: '#dee4f0'}}>
             <h2>
               如何加入我们
             </h2>
