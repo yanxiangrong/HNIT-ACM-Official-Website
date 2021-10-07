@@ -78,6 +78,7 @@ export default class Weather extends React.Component<any, State> {
         humidity: json["now"]["humidity"],
         visibility: json["now"]["vis"],
         windSpeed: json["now"]["windSpeed"],
+        windScale: json["now"]["windScale"],
         wind360: json["now"]["wind360"],
         windDir: json["now"]["windDir"],
         clouds: json["now"]["cloud"],
@@ -102,10 +103,10 @@ export default class Weather extends React.Component<any, State> {
       .finally(() => this.setState({loading: false}))
   }
 
-  convertTimestamp(timestamp: number) {
-    let d = new Date(timestamp * 1000)
-    return d.getHours() + ":" + d.getMinutes()
-  }
+  // convertTimestamp(timestamp: number) {
+  //   let d = new Date(timestamp * 1000)
+  //   return d.getHours() + ":" + d.getMinutes()
+  // }
 
   componentDidMount() {
     this.getWeather();
@@ -114,7 +115,7 @@ export default class Weather extends React.Component<any, State> {
   render() {
     const {
       loading, icon, temp, description, feelsLike, tempMin, tempMax, pressure, humidity,
-      visibility, windSpeed, wind360, clouds, dt, sunrise, sunset, windDir
+      visibility, windSpeed, wind360, clouds, dt, sunrise, sunset, windDir, windScale
     } = this.state
     const iconUrl = this.iconUrlPre + icon + this.iconUrlSuf
 
@@ -185,7 +186,7 @@ export default class Weather extends React.Component<any, State> {
 
             <div className={"contentItem"}>
               <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/wind-beaufort-" +
-              Math.round(Math.pow((windSpeed / 0.836), 2.0 / 3.0)).toString() + ".svg"}/>
+              windScale.toString() + ".svg"}/>
               <Tooltip title="风速">
                 <span>{windSpeed} m/s</span>
               </Tooltip>
