@@ -11,14 +11,16 @@ interface State {
   icon: string           // 图标
   temp: number           // 温度，℃
   description: string    // 详细天气  阴，多云
-  feelsLike: number     // 体感温度
-  tempMin: number       // 最低温
+  feelsLike: number      // 体感温度
+  tempMin: number        // 最低温
   tempMax: number        // 最高温
   pressure: number       // 大气压 hPa
   humidity: number       // 湿度 %
   visibility: number     // 能见度，米
   windSpeed: number      // 风速 meter/sec
-  windDeg: number        // 风向
+  windScale: number      // 风级
+  wind360: number        // 风向360角度
+  windDir: string        // 风向
   clouds: number         // 云层 %
   dt: number             // 计算时间
   sunrise: number        // 日出
@@ -39,7 +41,9 @@ export default class Weather extends React.Component<any, State> {
       humidity: -1,
       visibility: -1,
       windSpeed: -1,
-      windDeg: -1,
+      windScale : -1,
+      wind360: -1,
+      windDir: "",
       clouds: -1,
       dt: 0,
       sunrise: 0,
@@ -47,11 +51,12 @@ export default class Weather extends React.Component<any, State> {
     }
   }
 
-  weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=26.88&lon=112.68&appid=17e9e9ff665a13acc18f429036786c17&units=metric&lang=zh_cn"
-  iconUrlPre = "/assets/weather-icons/"
+  RealtimeWeatherAPI = "https://devapi.qweather.com/v7/weather/now?key=5d49aad9d7e24b75ad6c8269a99e7c2e&location=101250410"
+  ForecastWeatherAPI = "https://devapi.qweather.com/v7/weather/3d?key=5d49aad9d7e24b75ad6c8269a99e7c2e&location=101250410"
+  iconUrlPre = "/assets/qweather-icons/"
   iconUrlSuf = ".svg"
 
-  timeSleep = 2;
+  timeSleep = 2;  // 超时重试时间
 
   syncButtonHandle() {
     this.setState({loading: true})
@@ -59,27 +64,35 @@ export default class Weather extends React.Component<any, State> {
   }
 
   getWeather() {
-    fetch(this.weatherAPI).then(r => {
+    fetch(this.RealtimeWeatherAPI).then(r => {
       return r.json()
     }).then(json => {
       console.log(json)
 
       this.setState({
-        icon: json["weather"][0]["icon"],
-        temp: json["main"]["temp"],
-        description: json["weather"][0]["description"],
-        feelsLike: json["main"]["feels_like"],
-        tempMin: json["main"]["temp_min"],
-        tempMax: json["main"]["temp_max"],
-        pressure: json["main"]["pressure"],
-        humidity: json["main"]["humidity"],
-        visibility: json["visibility"],
-        windSpeed: json["wind"]["speed"],
-        windDeg: json["wind"]["deg"],
-        clouds: json["clouds"]["all"],
-        dt: json["dt"],
-        sunrise: json["sys"]["sunrise"],
-        sunset: json["sys"]["sunset"],
+        icon: json["now"]["icon"],
+        temp: json["now"]["temp"],
+        description: json["now"]["text"],
+        feelsLike: json["now"]["feelsLike"],
+        pressure: json["now"]["pressure"],
+        humidity: json["now"]["humidity"],
+        visibility: json["now"]["vis"],
+        windSpeed: json["now"]["windSpeed"],
+        wind360: json["now"]["wind360"],
+        windDir: json["now"]["windDir"],
+        clouds: json["now"]["cloud"],
+        dt: json["now"]["obsTime"],
+      })
+      return fetch(this.ForecastWeatherAPI)
+    }).then(r => {
+      return r.json()
+    }).then(json => {
+      console.log(json)
+      this.setState({
+        sunrise: json["daily"][0]["sunrise"],
+        sunset: json["daily"][0]["sunset"],
+        tempMax: json["daily"][0]["tempMax"],
+        tempMin: json["daily"][0]["tempMin"]
       })
     }).catch(e => {
       console.log(e)
@@ -101,7 +114,7 @@ export default class Weather extends React.Component<any, State> {
   render() {
     const {
       loading, icon, temp, description, feelsLike, tempMin, tempMax, pressure, humidity,
-      visibility, windSpeed, windDeg, clouds, dt, sunrise, sunset
+      visibility, windSpeed, wind360, clouds, dt, sunrise, sunset, windDir
     } = this.state
     const iconUrl = this.iconUrlPre + icon + this.iconUrlSuf
 
@@ -179,16 +192,16 @@ export default class Weather extends React.Component<any, State> {
             </div>
 
             <div className={"contentItem"}>
-              <img className={"smallIcon"} style={{transform: "rotate(" + windDeg.toString() + "deg)"}} alt={""}
+              <img className={"smallIcon"} style={{transform: "rotate(" + wind360.toString() + "deg)"}} alt={""}
                    src={"/assets/weather-icons/production/line/all/compass.svg"}/>
               <Tooltip title="风向">
-                <span>{windDeg} °</span>
+                <span>{windDir}</span>
               </Tooltip>
             </div>
 
             <div className={"contentItem"}>
               <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/cloudy.svg"}/>
-              <Tooltip title="云层清晰度">
+              <Tooltip title="云量">
                 <span>{clouds} %</span>
               </Tooltip>
             </div>
@@ -196,22 +209,22 @@ export default class Weather extends React.Component<any, State> {
             <div className={"contentItem"}>
               <img className={"smallIcon"} alt={""}
                    src={"/assets/weather-icons/production/line/all/not-available.svg"}/>
-              <Tooltip title="数据计算时间">
-                <span>{this.convertTimestamp(dt)}</span>
+              <Tooltip title="数据观测时间">
+                <span>{dt}</span>
               </Tooltip>
             </div>
 
             <div className={"contentItem"}>
               <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/sunrise.svg"}/>
               <Tooltip title="日出时间">
-                <span>{this.convertTimestamp(sunrise)}</span>
+                <span>{sunrise}</span>
               </Tooltip>
             </div>
 
             <div className={"contentItem"}>
               <img className={"smallIcon"} alt={""} src={"/assets/weather-icons/production/line/all/sunset.svg"}/>
               <Tooltip title="日落时间">
-                <span>{this.convertTimestamp(sunset)}</span>
+                <span>{sunset}</span>
               </Tooltip>
             </div>
 
